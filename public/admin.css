@@ -1,0 +1,26 @@
+/* Admin page */
+.adm-card { margin-bottom: 14px; }
+.adm-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.adm-head h2 { margin-bottom: 4px; }
+.adm-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.adm-msg { min-height: 18px; }
+.adm-msg.bad { color: var(--loss); font-weight: 600; }
+.adm-tbl td { vertical-align: middle; }
+.adm-tbl td:last-child { min-width: 250px; }
+
+/* on/off switch */
+.tgl { position: relative; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-size: 13px; }
+.tgl input { position: absolute; opacity: 0; width: 1px; height: 1px; min-height: 0; padding: 0; margin: 0; }
+.tgl span { position: relative; flex: none; width: 42px; height: 24px; border-radius: 999px; background: var(--surface3); border: 1px solid var(--line); transition: background .15s, border-color .15s; }
+.tgl span::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #8d9895; transition: left .15s, background .15s; }
+.tgl input:checked + span { background: rgba(216,255,85,.16); border-color: var(--accent); }
+.tgl input:checked + span::after { left: 21px; background: var(--accent); }
+.tgl input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+.tgl.sm span { width: 36px; height: 20px; }
+.tgl.sm span::after { width: 12px; height: 12px; }
+.tgl.sm input:checked + span::after { left: 19px; }
+@media (prefers-reduced-motion: reduce) { .tgl span, .tgl span::after { transition: none; } }
+
+.tgl b { white-space: nowrap; }
+.adm-head > .tgl { flex: none; }
+.adm-card .f .hint { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 12px; line-height: 1.45; }

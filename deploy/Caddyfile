@@ -1,0 +1,11 @@
+__DOMAIN__ {
+	request_body {
+		max_size 45MB
+	}
+	# OPTIONAL PASSWORD: remove the # signs below, then run:  caddy hash-password
+	# and paste the result instead of PASTE_HASH_HERE. Then: sudo systemctl reload caddy
+	#basic_auth {
+	#	serame PASTE_HASH_HERE
+	#}
+	reverse_proxy 127.0.0.1:3000
+}

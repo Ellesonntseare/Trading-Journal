@@ -1,0 +1,59 @@
+EDGE Trading Journal — Buffer Video + Post Formats Update
+=========================================================
+
+Changes
+-------
+- Facebook: choose Feed post, Story or Reel.
+- Instagram: choose Feed post, Story or Reel; optional share-to-feed checkbox.
+- YouTube: video title and category fields.
+- Upload MP4/MOV videos up to 200 MB each, with 1 GB per-user library quota.
+- Select a saved video, preview it, and schedule or queue it to multiple channels.
+- Server validates per-channel media requirements and returns individual results.
+- Selected channels receive the same timestamp in Schedule mode.
+- Screenshots and videos are mutually exclusive per post.
+
+There are NO new npm dependencies in this update.
+
+Install over your EXISTING Phase 5/Buffer Scheduler journal
+-----------------------------------------------------------
+1. Back up the whole existing journal directory (especially data/ and images/).
+2. Stop ONLY the EDGE process: pm2 stop edge
+3. Copy these four files from this update into your existing journal directory:
+      server.js
+      public/buffer.js
+      public/buffer.css
+      public/index.html
+   Preserve the public/ subdirectory. Overwrite the four existing files.
+4. Restart: pm2 restart edge
+5. Run: pm2 save
+6. Reload http://localhost:3000/#/buffer (Ctrl+Shift+R).
+
+Do NOT overwrite your existing data/, images/, config.json or .env files.
+Do NOT delete your existing data or images.
+
+How to publish
+--------------
+- To publish a screenshot, pick up to four saved screenshots in the gallery.
+- To publish a video, choose MP4/MOV, click Upload video, then select the video.
+- Select your connected social channels.
+- If Facebook selected, choose Post, Story or Reel.
+- If Instagram selected, choose Post, Story or Reel.
+- If YouTube selected, upload a video and complete its title and category.
+- Set Action > Schedule for a specific time, and choose date/time, or use Queue/Draft.
+- Check the per-channel success/failure results. Never automatically retry
+  successful channels, or you may create duplicate posts.
+
+IMPORTANT: PUBLIC HTTPS MEDIA ADDRESS
+-------------------------------------
+Buffer does not accept local file uploads via its API. Your journal must have
+an externally accessible HTTPS address for the unguessable image/video URLs.
+Videos uploaded to the journal are PRIVATE until selected for publishing.
+When you send a post, its specific media file is accessible through a long,
+random, public URL, which Buffer needs to fetch (sometimes at publishing time).
+Keep your server running, maintain the HTTPS address, and do not delete a
+scheduled video's underlying file until after publication is complete.
+Do NOT use localhost or LAN addresses for Buffer media.
+Your chosen platform may have additional video length, aspect ratio, codec,
+account, or permission restrictions. MP4/H.264/AAC is broadly compatible.
+
+Note: No live publish was performed with your Buffer credentials.

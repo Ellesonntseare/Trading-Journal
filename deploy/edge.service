@@ -1,0 +1,13 @@
+[Unit]
+Description=EDGE Trading Journal
+After=network.target
+
+[Service]
+WorkingDirectory=__APP_DIR__
+EnvironmentFile=/etc/edge.env
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

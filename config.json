@@ -1,0 +1,6 @@
+{
+  "imageDir": "C:\\Users\\elles\\Pictures\\Screenshots\\TradingJournal",
+  "port": 3000,
+  "groqModel": "openai/gpt-oss-20b",
+  "allowSignup": true
+}

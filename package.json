@@ -1,0 +1,13 @@
+{
+  "name": "trading-journal",
+  "version": "3.5.1",
+  "description": "A trading journal with before/after screenshots and per-user accounts",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "groq-sdk": "^0.37.0"
+  }
+}

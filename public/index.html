@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#121418">
+  <title>EDGE — Trading Journal</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23121418'/%3E%3Cpath d='M7 22l6-7 4 4 8-10' fill='none' stroke='%23d6a94a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extras.css">
+  <link rel="stylesheet" href="phase2.css">
+  <link rel="stylesheet" href="phase3.css">
+  <link rel="stylesheet" href="assistant.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="analysis.css">
+  <link rel="stylesheet" href="buffer.css?v=3">
+</head>
+<body class="logged-out">
+  <header class="topbar">
+    <a class="brand" href="#/journal">
+      <span class="brand-mark"><span></span><span></span><span></span></span>
+      <span><b>EDGE</b><small>TRADING JOURNAL</small></span>
+    </a>
+    <nav class="workspace-nav" aria-label="Main">
+      <a class="nav" data-route="journal" href="#/journal"><span class="nav-index">01</span><span>Journal</span></a>
+      <a class="nav" data-route="analysis" href="#/analysis"><span class="nav-index">02</span><span>Analysis</span></a>
+      <a class="nav" data-route="buffer" href="#/buffer"><span class="nav-index">03</span><span>Publish</span></a>
+      <a class="nav" data-route="review" href="#/review"><span class="nav-index">04</span><span>Review</span></a>
+      <a class="nav" data-route="insights" href="#/insights"><span class="nav-index">05</span><span>Insights</span></a>
+      <a class="nav" data-route="setups" href="#/setups"><span class="nav-index">06</span><span>Setups</span></a>
+      <a class="nav" data-route="stats" href="#/stats"><span class="nav-index">07</span><span>Performance</span></a>
+      <a class="nav" data-route="settings" href="#/settings"><span class="nav-index">08</span><span>Control room</span></a>
+      <a class="nav" data-route="search3" href="#/search3"><span class="nav-index">09</span><span>Search</span></a>
+      <a class="nav" data-route="library" href="#/library"><span class="nav-index">10</span><span>Library</span></a>
+      <a class="nav" data-route="knowledge" href="#/knowledge"><span class="nav-index">11</span><span>Knowledge</span></a>
+    </nav>
+    <div class="top-right">
+      <a class="quick-add" href="#/add"><span>+</span><b>Record trade</b></a>
+      <div id="userMenu"></div>
+    </div>
+  </header>
+
+  <main id="view" tabindex="-1"></main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="lightbox" aria-label="Screenshot">
+    <div class="lb-bar">
+      <span id="lb-title"></span>
+      <div class="lb-actions">
+        <button class="btn" id="lb-prev" aria-label="Previous image">&larr;</button>
+        <button class="btn" id="lb-next" aria-label="Next image">&rarr;</button>
+        <button class="btn" id="lb-zout" aria-label="Zoom out">&minus;</button>
+        <button class="btn" id="lb-zin" aria-label="Zoom in">+</button>
+        <button class="btn" id="lb-fit">Fit</button>
+        <button class="btn gold" id="lb-copy">Copy image</button>
+        <a class="btn" id="lb-open" target="_blank" rel="noopener">Open</a>
+        <button class="btn" id="lb-close">Close</button>
+      </div>
+    </div>
+    <div class="stage" id="lb-stage"><img id="lb-img" data-zoom alt=""></div>
+    <p class="stage-tip">Scroll to zoom, drag to move, double-click to reset.</p>
+  </dialog>
+
+  <dialog id="compare" aria-label="Compare before and after">
+    <div class="lb-bar">
+      <div class="lb-actions" id="cmp-left"></div>
+      <div class="lb-actions">
+        <button class="btn" id="cmp-zout" aria-label="Zoom out">&minus;</button>
+        <button class="btn" id="cmp-zin" aria-label="Zoom in">+</button>
+        <button class="btn" id="cmp-fit">Fit</button>
+        <button class="btn" id="cmp-close">Close</button>
+      </div>
+    </div>
+    <div id="cmp-body"></div>
+    <p class="stage-tip">Scroll to zoom, drag to move. Both pictures move together.</p>
+  </dialog>
+
+  <dialog id="annot" aria-label="Draw on screenshot">
+    <div class="lb-bar" id="an-bar"></div>
+    <div id="an-wrap"><canvas id="an-canvas"></canvas></div>
+  </dialog>
+
+  <dialog id="quick" aria-label="Close trade"></dialog>
+
+  <script src="app.js"></script>
+  <script src="auth.js"></script>
+  <script src="admin.js"></script>
+  <script src="analysis.js"></script>
+  <script src="buffer.js?v=3"></script>
+  <script src="phase2.js"></script>
+  <script src="phase3.js"></script>
+  <script src="extras.js"></script>
+  <script src="assistant.js"></script>
+</body>
+</html>

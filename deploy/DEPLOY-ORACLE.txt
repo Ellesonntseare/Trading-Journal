@@ -1,0 +1,45 @@
+PUT EDGE ON YOUR DOMAIN WITH ORACLE CLOUD (FREE)
+================================================
+
+PART 1 - Make the server (Oracle website)
+1. Log in to cloud.oracle.com > Compute > Instances > Create instance.
+2. Image: Ubuntu 22.04 (or 24.04). Shape: "VM.Standard.E2.1.Micro" (Always Free, AMD).
+   (If you pick the ARM shape and see "Out of capacity", use the AMD one.)
+3. Under "Add SSH keys", choose "Generate a key pair" and DOWNLOAD the private key.
+4. Create. Copy the "Public IP address" when it is ready.
+5. Open the instance > Subnet > Security List > Add Ingress Rules:
+   Source CIDR 0.0.0.0/0, TCP, Destination port 80  -> add
+   Source CIDR 0.0.0.0/0, TCP, Destination port 443 -> add
+   (Without this step the site will not open.)
+
+PART 2 - Point your domain
+In your domain's DNS settings add an "A" record:
+   Name: @  (or a name like journal)   Value: the Oracle Public IP
+Wait 5-30 minutes.
+
+PART 3 - Upload and install (PowerShell on your PC)
+1. Copy the app (skip node_modules):
+   scp -i C:\path\to\private.key -r "C:\Users\elles\Downloads\edge-trading-journal-phase5-ai-control" ubuntu@YOUR_IP:~/edge
+2. Copy your old trades and screenshots:
+   scp -i C:\path\to\private.key -r "C:\Users\elles\Pictures\Screenshots\TradingJournal\*" ubuntu@YOUR_IP:~/images-upload/
+   (First run on the server: mkdir ~/images-upload)
+3. Log in:  ssh -i C:\path\to\private.key ubuntu@YOUR_IP
+4. Install:
+   cd ~/edge
+   sudo bash deploy/setup-server.sh yourdomain.com
+5. Move the screenshots:  sudo cp -r ~/images-upload/* /var/edge/images/
+6. Put your NEW Groq key in:  sudo nano /etc/edge.env
+   Then:  sudo systemctl restart edge
+7. Open https://yourdomain.com
+
+USEFUL COMMANDS (on the server)
+   sudo systemctl status edge        - is it running?
+   sudo journalctl -u edge -n 50     - see errors
+   sudo systemctl restart edge       - restart after changes
+
+BACKUP: your data is in /var/edge/data and /var/edge/images.
+In the app, Settings > "Download a backup of my trades" also works.
+
+SAFETY NOTE: there is no login. Anyone who finds the address can see and
+change your trades and use your Groq key. To add a password, open
+/etc/caddy/Caddyfile, remove the # signs in the basic_auth part, and reload.
